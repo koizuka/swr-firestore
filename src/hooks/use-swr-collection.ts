@@ -529,7 +529,7 @@ export const useCollection = <
         batch.set(ref.doc(id), doc)
       })
 
-      return batch.commit()
+      return batch.commit().then(() => docsToAdd.map(({id}) => id));
     },
     [listen, mutate, path]
   )
